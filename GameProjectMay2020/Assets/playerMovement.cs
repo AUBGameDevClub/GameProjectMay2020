@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[RequireComponent(typeof(Rigidbody2D))] //gets the rigid component
+[RequireComponent(typeof(Rigidbody))] //gets the rigid component
 public class playerMovement : MonoBehaviour
 {
-    
     public Vector3 jump;
     public float jumpForce = 2.0f;
     public bool isGrounded; //checks if on ground, prevents infinite ascend 3end allah
 
-    Rigidbody2D rb; //your player
+    Rigidbody rb; //your player
 
     [SerializeField]
     private
@@ -21,7 +20,7 @@ public class playerMovement : MonoBehaviour
     private
         float _speedVertical; //speed along y
 
-    public Vector3 startPos;
+    public Vector2 startPos;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +29,7 @@ public class playerMovement : MonoBehaviour
         startPos = new Vector3(0, 0, 0);
         transform.position = startPos;
 
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody>();
         jump = new Vector3(0.0f, 2.0f, 0.0f);
 
 
@@ -68,17 +67,8 @@ public class playerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
 
-            rb.AddForce(jump*jumpForce, ForceMode2D.Impulse);
+            rb.AddForce(jump*jumpForce, ForceMode.Impulse);
             isGrounded = false;
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Saw")
-        {
-            startPos = new Vector3(0, 0, 0);
-            transform.position = startPos;
         }
     }
 }
