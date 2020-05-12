@@ -6,6 +6,134 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Chapters/Chapter null - Intro_end_cutscenes/Scenes/Main Menu.unity
+    guid: ca14bcc9bb5bb26428f16ab67a7b78be
+  - enabled: 1
+    path: Assets/Chapters/Chapter null - Intro_end_cutscenes/Scenes/Settings.unity
+    guid: 2cd4a0cdbdda62840870301b8bd34776
+  - enabled: 1
+    path: Assets/Chapters/Chapter null - Intro_end_cutscenes/Scenes/Chapter Select.unity
+    guid: d9fa4fb5fb410834abc1417625c172ca
+  - enabled: 1
+    path: Assets/Chapters/Chapter 1 - Granny Matte/Scenes/Chapter1.unity
+    guid: 206cfdfebc79f7a4c8efc9b1f43e6a88
+  - enabled: 1
+    path: Assets/Chapters/Chapter 2 - Grandpa Duck/Scenes/Chapter2.unity
+    guid: 5e87c58ab5822c54e9fa0e20adcc858c
+  - enabled: 1
+    path: Assets/Chapters/Chapter 3 - Cousin Chicken/Scenes/Chapter3.unity
+    guid: f8eeb57b660cf0f40924926eb3310aed
+  - enabled: 1
+    path: Assets/Chapters/Chapter 4 - Uncle Tiny/Scenes/Chapter4.unity
+    guid: dec7a7f640a7ac3429d6978b7c53a8a0
+  - enabled: 1
+    path: Assets/Chapters/Chapter 5 - Uncle Beek/Scenes/Chapter5.unity
+    guid: 5593b32ef0dd1524a99a322aa83f65bd
+  - enabled: 1
+    path: Assets/Chapters/Chapter 6 - Brother Mars/Scenes/Chapter6.unity
+    guid: a6a86d84d40b614499b5830207ee7c08
+  - enabled: 1
     path: Assets/Chapters/Chapter 1 - Granny Matte/Scenes/1-1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Chapters/Chapter 1 - Granny Matte/Scenes/1-2.unity
+    guid: fae07ebebef9b964b873836b41762eeb
+  - enabled: 1
+    path: Assets/Chapters/Chapter 1 - Granny Matte/Scenes/1-3.unity
+    guid: 9830772549c7d214391df172837c126d
+  - enabled: 1
+    path: Assets/Chapters/Chapter 1 - Granny Matte/Scenes/1-4.unity
+    guid: 47e1aafd000376f4c8bcb822f3f8d9fa
+  - enabled: 1
+    path: Assets/Chapters/Chapter 1 - Granny Matte/Scenes/1-5.unity
+    guid: 91d116fe75c98f443aadba0923ee1c48
+  - enabled: 1
+    path: Assets/Chapters/Chapter 2 - Grandpa Duck/Scenes/2-1.unity
+    guid: 60c7da01a91ce1641a193c0001bc4276
+  - enabled: 1
+    path: Assets/Chapters/Chapter 2 - Grandpa Duck/Scenes/2-2.unity
+    guid: 5c20a6da32681524bb9ed08b331c44db
+  - enabled: 1
+    path: Assets/Chapters/Chapter 2 - Grandpa Duck/Scenes/2-3.unity
+    guid: 82dd6c5ad9b5c634e9fcf779f5247709
+  - enabled: 1
+    path: Assets/Chapters/Chapter 2 - Grandpa Duck/Scenes/2-4.unity
+    guid: 0fcd8397cebc64549b853ace6c0753a1
+  - enabled: 1
+    path: Assets/Chapters/Chapter 2 - Grandpa Duck/Scenes/2-5.unity
+    guid: eafb6eb9e61844e468004eff8c78828e
+  - enabled: 1
+    path: Assets/Chapters/Chapter 3 - Cousin Chicken/Scenes/3-1.unity
+    guid: c98a9058e40231f43a93b502e5cb88bf
+  - enabled: 1
+    path: Assets/Chapters/Chapter 3 - Cousin Chicken/Scenes/3-2.unity
+    guid: 6e3ce51e2557f2f4eb7b46f10b1faec9
+  - enabled: 1
+    path: Assets/Chapters/Chapter 3 - Cousin Chicken/Scenes/3-3.unity
+    guid: 21d1090277ae06c4c9311a5177962b61
+  - enabled: 1
+    path: Assets/Chapters/Chapter 3 - Cousin Chicken/Scenes/3-4.unity
+    guid: b5bdc66b642913d46bab009dac79ad53
+  - enabled: 1
+    path: Assets/Chapters/Chapter 3 - Cousin Chicken/Scenes/3-5.unity
+    guid: 38f6b384c536b1744ad52fcf057e1055
+  - enabled: 1
+    path: Assets/Chapters/Chapter 4 - Uncle Tiny/Scenes/4-1.unity
+    guid: 41b5af57d1977f842b9529d40324a98e
+  - enabled: 1
+    path: Assets/Chapters/Chapter 4 - Uncle Tiny/Scenes/4-2.unity
+    guid: 9a71878ece9fc454fa03d9a588ea3201
+  - enabled: 1
+    path: Assets/Chapters/Chapter 4 - Uncle Tiny/Scenes/4-3.unity
+    guid: 75861dcdea2b3d646b075a855815254f
+  - enabled: 1
+    path: Assets/Chapters/Chapter 4 - Uncle Tiny/Scenes/4-4.unity
+    guid: 8fa22d39f05da5646a7d8b289bf2e73a
+  - enabled: 1
+    path: Assets/Chapters/Chapter 4 - Uncle Tiny/Scenes/4-5.unity
+    guid: aa1003d4c4eb9d94e8e831f18156e90b
+  - enabled: 1
+    path: Assets/Chapters/Chapter 5 - Uncle Beek/Scenes/5-1.unity
+    guid: 3b55af17042ebee4da4ea3ba08d06231
+  - enabled: 1
+    path: Assets/Chapters/Chapter 5 - Uncle Beek/Scenes/5-2.unity
+    guid: 4c90ddd7a24d3ba459958fc3dda3803b
+  - enabled: 1
+    path: Assets/Chapters/Chapter 5 - Uncle Beek/Scenes/5-3.unity
+    guid: 578095cc74a048449bce6e3bca135142
+  - enabled: 1
+    path: Assets/Chapters/Chapter 5 - Uncle Beek/Scenes/5-4.unity
+    guid: bf0a254dc5465cc40a86fb0883ce6cc9
+  - enabled: 1
+    path: Assets/Chapters/Chapter 5 - Uncle Beek/Scenes/5-5.unity
+    guid: f8a6bb6820898b24887355babc546a11
+  - enabled: 1
+    path: Assets/Chapters/Chapter 6 - Brother Mars/Scenes/6-1.unity
+    guid: 47ad6e114621e3945b31fca328c94a67
+  - enabled: 1
+    path: Assets/Chapters/Chapter 6 - Brother Mars/Scenes/6-2.unity
+    guid: 6ad98d541dea5474dacb9aa4b5fe25f1
+  - enabled: 1
+    path: Assets/Chapters/Chapter 6 - Brother Mars/Scenes/6-3.unity
+    guid: e6c87c861411a294ba1ac96b97e81174
+  - enabled: 1
+    path: Assets/Chapters/Chapter 6 - Brother Mars/Scenes/6-4.unity
+    guid: 6265b10acd726fd42816b6883f3fad99
+  - enabled: 1
+    path: Assets/Chapters/Chapter 6 - Brother Mars/Scenes/6-5.unity
+    guid: 6c2d4beb3f7fcd448b5d64f76205a647
+  - enabled: 1
+    path: Assets/Chapters/Chapter null - Intro_end_cutscenes/Scenes/Credits.unity
+    guid: b20e0f8c8d65284478355fabeeb919a2
+  - enabled: 1
+    path: Assets/Chapters/Chapter null - Intro_end_cutscenes/Scenes/Cutscene Beginning
+      of Chapter.unity
+    guid: ee35107afc39cad449a64fd1efa3b691
+  - enabled: 1
+    path: Assets/Chapters/Chapter null - Intro_end_cutscenes/Scenes/Cutscene End of
+      Chapter.unity
+    guid: 0d6470a4f0eea0944994aabe72ae1b02
+  - enabled: 1
+    path: Assets/Chapters/Chapter null - Intro_end_cutscenes/Scenes/Pause Menu.unity
+    guid: bdf2c9b681f94764e8fa53d86c778762
   m_configObjects: {}

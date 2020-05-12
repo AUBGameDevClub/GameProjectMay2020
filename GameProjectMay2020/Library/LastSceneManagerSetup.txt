@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Chapters/Chapter 3 - Cousin Chicken/Scenes/3-2.unity
+- path: Assets/Chapters/Chapter 6 - Brother Mars/Scenes/Chapter6.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
