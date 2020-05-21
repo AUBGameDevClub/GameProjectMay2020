@@ -4,18 +4,12 @@ using UnityEngine;
 
 public class Main : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+     public Transform player;
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        /*if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("hi");
-        }*/
+        Vector3 playervector = new Vector3(player.position.x, player.position.y, transform.position.z);
+
+        transform.position = Vector3.Lerp(transform.position, playervector, 0.2f);
     }
 }

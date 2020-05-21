@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Collectible : MonoBehaviour
 {  //when collision, "consume" powerup
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag =="Player")
+        if (other.gameObject.CompareTag("Player"))
         {
             Destroy(this.gameObject);
         }

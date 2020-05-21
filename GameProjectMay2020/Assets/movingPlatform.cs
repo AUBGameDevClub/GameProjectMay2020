@@ -18,11 +18,11 @@ public class movingPlatform : MonoBehaviour
         transform.position = _newPosition;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         other.transform.parent = transform;
     }
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         other.transform.parent = null;
     }

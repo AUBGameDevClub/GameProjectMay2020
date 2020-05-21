@@ -6,12 +6,9 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))] //gets the rigid component
 public class playerMovement : MonoBehaviour
 {
-    
-    public Vector3 jump;
-    public float jumpForce = 2.0f;
-    public bool isGrounded; //checks if on ground, prevents infinite ascend 3end allah
 
     Rigidbody2D rb; //your player
+    public float jump = 2.0f;
 
     [SerializeField]
     private
@@ -21,31 +18,17 @@ public class playerMovement : MonoBehaviour
     private
         float _speedVertical; //speed along y
 
-    public Vector3 startPos;
+    public Vector2 startPos;
 
     // Start is called before the first frame update
     void Start()
 
     {   //set start position
-        startPos = new Vector3(0, 0, 0);
+        startPos = new Vector2(0, 0);
         transform.position = startPos;
-
-        rb = GetComponent<Rigidbody2D>();
-        jump = new Vector3(0.0f, 2.0f, 0.0f);
-
+        rb = transform.GetComponent<Rigidbody2D>();
 
     }
-
-    void OnCollisionStay() //again, checks if on ground. needed for jumping
-    {
-        isGrounded = true;
-    }
-
-    void OnCollisionExit()
-    {
-        isGrounded = false;
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -64,20 +47,19 @@ public class playerMovement : MonoBehaviour
             transform.Translate(new Vector3(0, vertInput, 0) * (_speedVertical * 2) * Time.deltaTime);
         }
 
-        //jump
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-
-            rb.AddForce(jump*jumpForce, ForceMode2D.Impulse);
-            isGrounded = false;
+            rb.velocity = Vector2.up * jump;
         }
+        
     }
 
-    private void OnTriggerEnter(Collider other)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.tag == "Saw")
+        if (collision.gameObject.CompareTag("Saw"))
         {
-            startPos = new Vector3(0, 0, 0);
+            startPos = new Vector2(0, 0);
             transform.position = startPos;
         }
     }
