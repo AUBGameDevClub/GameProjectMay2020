@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Chapters/Chapter 5 - Uncle Beek/Scenes/5-1.unity
+- path: Assets/Chapters/Chapter 1 - Granny Matte/Scenes/1-1.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
