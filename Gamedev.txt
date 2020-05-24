@@ -1,8 +1,0 @@
-<<<<<<< HEAD
-hi
-=======
-
-Saiid: Wassup
-
-
->>>>>>> 066f3a93038ea6b3f4f465ba6417df3fe7aba149
