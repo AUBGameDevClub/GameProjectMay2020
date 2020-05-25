@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     {
 
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+
         if (Input.GetButtonDown("Jump"))
         {
             jump = true;
@@ -39,6 +40,5 @@ public class PlayerMovement : MonoBehaviour
         // Move our character
         controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
         jump = false;
-        Debug.Log(horizontalMove);
     }
 }
