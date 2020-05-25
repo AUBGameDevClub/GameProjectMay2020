@@ -2,73 +2,42 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-[RequireComponent(typeof(Rigidbody))] //gets the rigid component
-public class playerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
-    public Vector3 jump;
-    public float jumpForce = 2.0f;
-    public bool isGrounded; //checks if on ground, prevents infinite ascend 3end allah
 
-    Rigidbody rb; //your player
+    public CharacterController2D controller;
 
-    [SerializeField]
-    private
-        float _speedHorizontal; //speed along x
+    public float runSpeed = 40f;
 
-    [SerializeField]
-    private
-        float _speedVertical; //speed along y
-
-    public Vector2 startPos;
-
-    // Start is called before the first frame update
-    void Start()
-
-    {   //set start position
-        startPos = new Vector3(0, 0, 0);
-        transform.position = startPos;
-
-        rb = GetComponent<Rigidbody>();
-        jump = new Vector3(0.0f, 2.0f, 0.0f);
-
-
-    }
-
-    void OnCollisionStay() //again, checks if on ground. needed for jumping
-    {
-        isGrounded = true;
-    }
-
-    void OnCollisionExit()
-    {
-        isGrounded = false;
-    }
+    float horizontalMove = 0f;
+    bool jump = false;
+    bool crouch = false;
 
     // Update is called once per frame
     void Update()
     {
-        //horizontal speed, input in Unity
-        float horizInput = Input.GetAxis("Horizontal");
-        transform.Translate(new Vector3(horizInput, 0, 0) * _speedHorizontal * Time.deltaTime);
 
-        //Vertical speed, input in Unity
-        float vertInput = Input.GetAxis("Vertical");
-        transform.Translate(new Vector3(0, vertInput, 0) * _speedVertical * Time.deltaTime);
-
-        //double speed when shift pressed down
-        if (Input.GetKey(KeyCode.LeftShift))
+        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+        if (Input.GetButtonDown("Jump"))
         {
-            transform.Translate(new Vector3(horizInput, 0, 0) * (_speedHorizontal * 2) * Time.deltaTime);
-            transform.Translate(new Vector3(0, vertInput, 0) * (_speedVertical * 2) * Time.deltaTime);
+            jump = true;
         }
 
-        //jump
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetButtonDown("Crouch"))
         {
-
-            rb.AddForce(jump*jumpForce, ForceMode.Impulse);
-            isGrounded = false;
+            crouch = true;
         }
+        else if (Input.GetButtonUp("Crouch"))
+        {
+            crouch = false;
+        }
+
+    }
+
+    void FixedUpdate()
+    {
+        // Move our character
+        controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
+        jump = false;
     }
 }
