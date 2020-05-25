@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     //COMPONENTS
     private Rigidbody2D rb;
+    private Animator animator;
 
     //Parameters for tuning in unity
     public float speed = 3f;
@@ -16,6 +17,8 @@ public class PlayerController : MonoBehaviour
     //variables
     bool canJump = false;
     float numJumps = 0;
+    float xdir = 1f;
+    
 
 
     // Start is called before the first frame update
@@ -24,7 +27,7 @@ public class PlayerController : MonoBehaviour
 
         //Getting components ready
         rb = GetComponent<Rigidbody2D>();
-
+        animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -34,10 +37,16 @@ public class PlayerController : MonoBehaviour
         Vector2 vel = rb.velocity;
 
         //check if grounded
+        if(Math.Abs(vel.y) < 0.02f)
+        {
+            animator.SetBool("isJumping", false);
+        }
+
         if(!canJump && Math.Abs(vel.y) < 0.02f)
         {
             canJump = true;
             numJumps = 0;
+            
         }
 
 
@@ -55,10 +64,20 @@ public class PlayerController : MonoBehaviour
         //Position Control
 
         vel = rb.velocity;
-        vel.x = xMove * speed;
-        rb.velocity = vel;
-
         
+        vel.x = xMove * speed;
+        
+        rb.velocity = vel;
+        Debug.Log(rb.velocity);
+
+        animator.SetFloat("xspeedAbs", vel.magnitude);
+
+        if (vel.magnitude > 0.01f)
+        {
+            xdir = Math.Sign(vel.x);
+        }
+
+        animator.SetFloat("xdir", xdir);
 
 
 
@@ -73,8 +92,8 @@ public class PlayerController : MonoBehaviour
 
     void jump()
     {
-        
-        Debug.Log("Jumping");
+
+        animator.SetBool("isJumping", true);
 
         Vector2 vel = rb.velocity;
         vel.y = jumpForce;
