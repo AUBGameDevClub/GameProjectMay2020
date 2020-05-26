@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class CharacterController2D : MonoBehaviour
 {
@@ -9,20 +10,26 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] private LayerMask m_WhatIsGround;                          // A mask determining what is ground to the character
     [SerializeField] private Transform m_GroundCheck;                           // A position marking where to check if the player is grounded.
     [SerializeField] private Transform m_CeilingCheck;                          // A position marking where to check for ceilings
+
+    
+
     [SerializeField] private Collider2D m_CrouchDisableCollider;                // A collider that will be disabled when crouching
 
     const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
+
+
     private bool m_Grounded;            // Whether or not the player is grounded.
     const float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
     private Rigidbody2D m_Rigidbody2D;
+    private Animator animator;
     private bool m_FacingRight = true;  // For determining which way the player is currently facing.
     private Vector3 velocity = Vector3.zero;
 
     private void Awake()
     {
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
+        animator = GetComponentInChildren<Animator>();
     }
-
 
     private void FixedUpdate()
     {
@@ -36,19 +43,27 @@ public class CharacterController2D : MonoBehaviour
         {
             if (colliders[i].gameObject != gameObject)
                 m_Grounded = true;
+
+                animatorChangeBool("isJumping", false);
         }
+
+
     }
 
 
     public void Move(float move, bool crouch, bool jump)
     {
+        bool wasCrouching = animator.GetBool("isCrouching");
+
         // If crouching, check to see if the character can stand up
-        if (!crouch)
+        
+        if (!crouch && wasCrouching)
         {
             // If the character has a ceiling preventing them from standing up, keep them crouching
             if (Physics2D.OverlapCircle(m_CeilingCheck.position, k_CeilingRadius, m_WhatIsGround))
             {
                 crouch = true;
+                
             }
         }
 
@@ -74,18 +89,16 @@ public class CharacterController2D : MonoBehaviour
             }
 
             // Move the character by finding the target velocity
-            Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
-            // And then smoothing it out and applying it to the character
-            m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref velocity, m_MovementSmoothing);
+            changeVelocitySmoothly(move * 10f, m_Rigidbody2D.velocity.y);
 
             // If the input is moving the player right and the player is facing left...
-            if (move > 0 && !m_FacingRight)
+            if (move < 0 && !m_FacingRight)
             {
                 // ... flip the player.
                 Flip();
             }
             // Otherwise if the input is moving the player left and the player is facing right...
-            else if (move < 0 && m_FacingRight)
+            else if (move > 0 && m_FacingRight)
             {
                 // ... flip the player.
                 Flip();
@@ -97,9 +110,15 @@ public class CharacterController2D : MonoBehaviour
             // Add a vertical force to the player.
             m_Grounded = false;
             m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
-        }
-    }
 
+            animatorChangeBool("isJumping", true);
+        }
+
+
+        animatorChangeBool("isCrouching", crouch);
+        animatorChangeFloat("xspeedAbs", m_Rigidbody2D.velocity.magnitude);
+
+    }
 
     private void Flip()
     {
@@ -110,5 +129,62 @@ public class CharacterController2D : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+
+        animatorChangeFloat("xdir", theScale.x);
     }
+
+    internal void tryToClimb(float move,bool canClimb)
+    {
+        if (canClimb)
+        {
+            //if he is not climbing
+            if (m_Grounded && Math.Abs(move) < 0.01)
+                animatorChangeBool("isClimbing", false);
+
+            else
+                animatorChangeBool("isClimbing", true);
+
+
+            changeVelocitySmoothly(m_Rigidbody2D.velocity.x, move * 10f);
+        }
+        else
+        {
+            animatorChangeBool("isClimbing", false);
+        }
+    }
+
+    private void changeVelocitySmoothly(float x,float y)
+    {
+        Vector3 targetVelocity = new Vector2(x, y);
+        // And then smoothing it out and applying it to the character
+        m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref velocity, m_MovementSmoothing);
+    }
+    private void animatorChangeFloat(String parameter, float value)
+    {
+        float previousValue = animator.GetFloat(parameter);
+
+        if (previousValue != value)
+        {
+            animator.SetFloat(parameter, value);
+        }
+    }
+    private void animatorChangeBool(String parameter, bool value)
+    {
+        bool previousValue = animator.GetBool(parameter);
+
+        if (previousValue != value)
+        {
+            animator.SetBool(parameter, value);
+        }
+    }
+
+
+    //the animation contains an event to call the level restart function
+    internal void runDeathAnimation()
+    {
+        animatorChangeBool("isDead", true);
+    }
+
 }
+
+
